@@ -1,0 +1,44 @@
+Reactive programming is one of the four paradigms (Procedural, Object-Oriented, Functional and Reactive)
+To say a system is reactive, it has to achieve four characteristics:
+
+- Elastic
+- Responsive
+- Resilient
+- Message Driven
+
+- Responsive: A system has to have a set time limit to response to user request. For example in a system that generates an intensive reports, maybe exist
+slow responses,
+you can solve this with Parallel resources, but this needs a lot of resources. Other way is use Async, this means take the request and answer to the user
+ and when then report is ready send it by email, using things like queues.
+
+
+- Resilient: In these systems errors are first class citizens, just like happy answers, the system need to deal effectively with errors.
+You need to have a backup plan in case of failure.
+
+
+- Elastic: The system should be able to handle abnormal amount of request without any manual intervention.
+
+- Message Driven: Systems has to be loose coupling by implementing communications asynchronous, messaging is not blocking.
+
+Rxjava was made b netflix and now stay in the 3.1.1 version.
+
+* Sync vs async
+
+In programming asynchronous means the occurrence of events independent of the main program flow. Asynchronous is achieved with concurrency in a system,
+in this way a thread is working in main, and other thread is working in background, when the second thread finish the job it will join the main thread.
+
+Without rxjava this can be achieved with callback, which means create another threads and then when the result is ready join in the main thread,
+but this is hard to program well, and can get us in a callback hell.
+
+* Push and pull mechanism:
+
+In general most used programming models is request-response model, which is a pull based mechanism, where the server sends back the response after processing the request.
+
+But in RxJava everything is push based, this means we just await for callback responses.
+
+* Observer design pattern
+
+
+
+
+
