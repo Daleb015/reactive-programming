@@ -1,0 +1,22 @@
+* Observable - observers
+
+Observable as use in the same way as stream api on java, we can generate an observable and from it use intermediate operators and terminal operators and others.
+the important difference here is in the pipeline of operators we work with asynchronously operations,
+
+
+Once an observer subscribe on an observable it passes three types of events to an observable onNext(), onComplete() and onError().
+
+onNext: Observable passes each item one at a time to the observer using on next method.
+onComplete: This tells that no more or next calls will occur, the emission of elements or the events is now complete.
+onError: In reactive programming error are treated like data, as data flow from observable to observer, in this way errors are propagated, they are also first class citizens.
+
+
+If on error is invoked, oncomplete never going to be executed, needs to be the first or the second but no same at time.
+
+There are three different channels:
+- Data channel
+- Completion signal
+- Error signal
+
+
+
