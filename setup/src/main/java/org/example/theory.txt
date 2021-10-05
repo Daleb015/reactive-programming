@@ -1,0 +1,8 @@
+to set up rxjava we need to add maven dependencies:
+    <dependency>
+      <groupId>io.reactivex.rxjava3</groupId>
+      <artifactId>rxjava</artifactId>
+      <version>3.1.1</version>
+    </dependency>
+
+

@@ -38,7 +38,43 @@ But in RxJava everything is push based, this means we just await for callback re
 
 * Observer design pattern
 
+The observer design pattern defines one to many dependencies, when one subject change its state, all dependant objects get notified or updated automatically. Once observers gets notified
+ and then can get the updated data.
+
+To implement this pattern we need two interfaces, subject that have 3 methods: registerObserver, removeObserver and notifyObserver. The other interface is called Observer
+and has the method update, so first an observer register with one of the subject methods, then when the subject change its state use the update method of each one observer.
+
+In rx java a Subject is called observable, and the observer is an observer. In rxjava when a subject change state emits data or message to the observer to update the data.
 
 
+* Concurrent vs parallel programming
+
+Concurrency is to run multiple parts of the program with different thread. Is when more than one task can start, run and complete in overlapping time periods,
+it doesn't necessarily mean they'll be running at the same instant, it's multitasking on a single core.
+
+Whereas parallelism is when tasks literally run at same time for example in a multicore processor, after completion all joined with a pool task.
+
+This behaviour is not easy to achieve with just java core, so Rxjava provides us a better abstraction to achieve this,
+rxjava provides with schedulers and better support for concurrency and parallelism.
 
 
+* RxJava big Picture
+
+- rxjava works on push rather than pull
+- different channels for different signals
+- rxjava can compose events by operators
+- rxjava uses schedulers
+- BackPressure using flowable
+
+* RxJava Reactive Streams
+
+RxJava is a library by netflix developers, part of the reactivex extension.
+Built upon observer pattern design.
+Works with observable and observer.
+When observer become popular, java came with a standard that is called reactive streams.
+Reactive streams is a set of interfaces, called Reactive streams Technology Compatibility Kit (TCK).
+Reactive streams uses flowable instead of observables.
+java core show us the implementation of reactive streams standard with java 9 Flow Api.
+Java 9 has the library flowable and rxjava and flowable are interoperable, means if you are using the latest rx java version you can replace
+java 9 flowable for rx java or vice versa.
+there are others apis that implements reactive streams like reactor.

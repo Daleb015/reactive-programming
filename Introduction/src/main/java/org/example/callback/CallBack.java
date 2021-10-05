@@ -1,4 +1,4 @@
-package main;
+package org.example.callback;
 
 public interface CallBack {
     void pushData(String data);

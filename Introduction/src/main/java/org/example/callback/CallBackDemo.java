@@ -1,4 +1,4 @@
-package main;
+package org.example.callback;
 
 public class CallBackDemo {
     public static void main(String[] args) {
