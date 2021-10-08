@@ -19,4 +19,47 @@ There are three different channels:
 - Error signal
 
 
+* Create observable
+
+There are how many methods to create observable
+- create(source)
+- just(1 to 10 item)
+- fromIterable(iterableSource)
+- range(startValue, totalCount) / rangeLong(startValue, totalCount)
+- Observable.interval(period, unit)
+- Observable.future(future);
+- Observable.empty();
+- Observable.never();
+- Observable.error(Exception);
+- Observable.defer(supplier);
+- Observable.fromCallable(Callable);
+
+* Hot and cold observables
+
+There are two types of observables: Cold observables and hot observables.
+If there is the possibility that an observer get the data of an observable but the data has been change previously, this is cold observable,
+this means that if there are more observers and data has changed they can receive the updated data or not.
+
+To specify this:
+
+- Cold observables: if a data changes between two subscriptions, and the data for the first observer is different to the data
+for the second observer, then the observable its cold observable.
+Every time that an observer subscribes it will receive the actual data inside the observable.
+- Hot observables: it's an observables that starts when we create it, it does not even wait for any subscription, and all the observers receives the same data,
+ this means basically than its independent of any subscription.
+
+* Connectable observables
+
+A connectable observable is an observable than convert a cold observable to a hot observable, it has the connect method.
+
+* Observable variants
+
+there exist different types of observable, these are:
+
+- Single: emits only item. Exist a particular SingleObserver interface to use it.
+- Maybe: it's an observable that may or may not emit a value.
+- Completable: Does not emit data, it's just concerned with the action being executed. Was successful or not.
+
+
+
 

@@ -1,0 +1,80 @@
+Reactive programming is one of the four paradigms (Procedural, Object-Oriented, Functional and Reactive)
+To say a system is reactive, it has to achieve four characteristics:
+
+- Elastic
+- Responsive
+- Resilient
+- Message Driven
+
+- Responsive: A system has to have a set time limit to response to user request. For example in a system that generates an intensive reports, maybe exist
+slow responses,
+you can solve this with Parallel resources, but this needs a lot of resources. Other way is use Async, this means take the request and answer to the user
+ and when then report is ready send it by email, using things like queues.
+
+
+- Resilient: In these systems errors are first class citizens, just like happy answers, the system need to deal effectively with errors.
+You need to have a backup plan in case of failure.
+
+
+- Elastic: The system should be able to handle abnormal amount of request without any manual intervention.
+
+- Message Driven: Systems has to be loose coupling by implementing communications asynchronous, messaging is not blocking.
+
+Rxjava was made b netflix and now stay in the 3.1.1 version.
+
+* Sync vs async
+
+In programming asynchronous means the occurrence of events independent of the main program flow. Asynchronous is achieved with concurrency in a system,
+in this way a thread is working in main, and other thread is working in background, when the second thread finish the job it will join the main thread.
+
+Without rxjava this can be achieved with callback, which means create another threads and then when the result is ready join in the main thread,
+but this is hard to program well, and can get us in a callback hell.
+
+* Push and pull mechanism:
+
+In general most used programming models is request-response model, which is a pull based mechanism, where the server sends back the response after processing the request.
+
+But in RxJava everything is push based, this means we just await for callback responses.
+
+* Observer design pattern
+
+The observer design pattern defines one to many dependencies, when one subject change its state, all dependant objects get notified or updated automatically. Once observers gets notified
+ and then can get the updated data.
+
+To implement this pattern we need two interfaces, subject that have 3 methods: registerObserver, removeObserver and notifyObserver. The other interface is called Observer
+and has the method update, so first an observer register with one of the subject methods, then when the subject change its state use the update method of each one observer.
+
+In rx java a Subject is called observable, and the observer is an observer. In rxjava when a subject change state emits data or message to the observer to update the data.
+
+
+* Concurrent vs parallel programming
+
+Concurrency is to run multiple parts of the program with different thread. Is when more than one task can start, run and complete in overlapping time periods,
+it doesn't necessarily mean they'll be running at the same instant, it's multitasking on a single core.
+
+Whereas parallelism is when tasks literally run at same time for example in a multicore processor, after completion all joined with a pool task.
+
+This behaviour is not easy to achieve with just java core, so Rxjava provides us a better abstraction to achieve this,
+rxjava provides with schedulers and better support for concurrency and parallelism.
+
+
+* RxJava big Picture
+
+- rxjava works on push rather than pull
+- different channels for different signals
+- rxjava can compose events by operators
+- rxjava uses schedulers
+- BackPressure using flowable
+
+* RxJava Reactive Streams
+
+RxJava is a library by netflix developers, part of the reactivex extension.
+Built upon observer pattern design.
+Works with observable and observer.
+When observer become popular, java came with a standard that is called reactive streams.
+Reactive streams is a set of interfaces, called Reactive streams Technology Compatibility Kit (TCK).
+Reactive streams uses flowable instead of observables.
+java core show us the implementation of reactive streams standard with java 9 Flow Api.
+Java 9 has the library flowable and rxjava and flowable are interoperable, means if you are using the latest rx java version you can replace
+java 9 flowable for rx java or vice versa.
+there are others apis that implements reactive streams like reactor.
