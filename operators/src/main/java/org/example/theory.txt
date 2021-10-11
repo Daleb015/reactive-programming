@@ -1,0 +1,83 @@
+Operators allow us to transform, modify, reduce data from a source.
+
+*sorted
+order an observable, return an observable with order values.
+
+*Operator types
+
+There are five operator type's, these are:
+
+- Suppressing operators
+- Transforming operators
+- Reducing operators
+- Error-recovery operators
+- Action operators
+
+*Suppressing operators
+
+suppress the emissions which fails to meet some specific criteria.
+
+- filter: receive an element, return an observable of the element that match a condition.
+- take: captures a specified number of emissions from upstreams and emits (first number elements of an observable)
+- skip: captures a specified number of emissions from upstreams and emits (last number of elements of an observable)
+- distinct: suppress the duplicates | emits unique emission
+- elementAt: Used to get element present at specified index
+
+*transforming operators
+
+transform the emissions
+type of returned observable may not be the same
+
+- map: take a function that changes the returned value
+- cast: we provide the type class we desert on the new observable
+- delay: delay the emission with the specific amount of time
+- delaySubscription: delay subscription with the specified amount of time
+- scan: takes accumulator function and apply to the first item and feeds result to next
+- sorted: sorts upstream emissions (natural sorting or passing a comparator)
+- repeat: repeats subscription upstream specified number of items
+
+*reducing operators
+
+Take a series of emission and reduce them into single emission
+works with finite observables
+
+- count: counts the number of emissions in upstream
+- reduce: identical to scan but emits the final accumulation
+- contains: check whether the specified element is emitted from the upstream or not
+- all: verifies that each emission is satisfying the specified condition or not
+- any: verifies whether any of emission is satisfying the specified condition or not
+
+* collection operators
+
+combine all the emissions from upstream to some collections
+reduce emissions to a single collection
+
+- toList: combine upstream emissions into a list and emits entire list in a single emission
+- toSortedList: combine upstream emissions into sorted list
+- toMap: collect upstream emissions into a map
+- collect: take emissions into any type of collection that we want
+
+
+* error recovery operators
+
+used to handle the error and to recover from them
+
+- onError: Communicates error to observer directly
+- onErrorReturnItem:
+- onErrorReturn:
+- onErrorResumeNext:
+- retry: re-subscribes to the observable hoping that it will complete without any error
+
+* action operators
+
+used to do debugging in the observable chain
+
+- doOnNext
+- doOnError
+- doOnSubscribe
+- doOnComplete
+
+We can peek into observable chain at some particular event, to know what's happening.
+
+
+

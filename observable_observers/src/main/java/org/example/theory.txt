@@ -61,5 +61,10 @@ there exist different types of observable, these are:
 - Completable: Does not emit data, it's just concerned with the action being executed. Was successful or not.
 
 
+* dispose
+
+With this method we can unsubscribe from an observable, when an observable stop or finish emit values, it's executed onComplete method,
+so the resources are now free and the garbage collector process it.
+
 
 
