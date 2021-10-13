@@ -1,0 +1,21 @@
+* Combining observables
+
+- These allow us to perform combinations between observables.
+
+*merge and concatenating
+
+Merging the emissions of multiple observables to have a single observable source, the kind of emissions that will emit depends on the type of merge operator we use.
+
+Merge:
+
+merge two observables, but we can merge more observables.
+
+Merge does not maintain a particular order of the elements emitted, the new observable will have the elements emitted
+in the combined order of the emissions of the combined observables.
+
+Concat:
+
+Concat allow us to combine two or more observables, the difference with merge in that concat maintains the sequential order of the emitted elements when combine sources.
+
+
+
