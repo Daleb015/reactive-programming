@@ -17,5 +17,16 @@ Concat:
 
 Concat allow us to combine two or more observables, the difference with merge in that concat maintains the sequential order of the emitted elements when combine sources.
 
+*flatMap concatMap
 
+flatMap and concatMap allow us to transform observable and take observables result as source to convert all that in just one observable.
+
+
+- flatMap: it receives a mapper function, it takes each emission or each element and then break it up into multiple elements and returns an observable having those elements
+and finally when we get all the observables corresponding to each element this operating merge the result to a new observable. Flat map takes all the observables
+return by each element and flatten them or merge them to have a single observable. We conserve the places originally because this is a merge operation. In other words
+flatMap take a mapper but this mappers return another observable, when all values are processed and return and observable, flatMap flatten it.
+
+- concatMap: there is just one difference between the last operations, concatMap executes a concat operation at the end when join the observables, so are going to have
+the observable in a sequential order.
 
