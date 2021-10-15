@@ -36,6 +36,14 @@ Amb takes and iterator, we can write two observables that return an iterable, an
 elements of the faster observable first, given two or more source Observables, emit all the items from only the first of these Observables
 to emit an item or notification.
 
+*zip and combineLatest
 
+These operators allow us to sip observables, combine elements with a desirable function.
+
+- Zip: Allows you to take an emission from each observable source and combine them or combine into a single emission, we provide the lambda to decide how the
+corresponding emissions should get combined, basically the zip method returns an observable with a combined elements with a zipper of our choice.
+
+- combineLatest: similar to zip,  when an item is emitted by either of two Observables, combine the latest item emitted by each Observable via a specified function and
+emit items based on the results of this function
 
 
