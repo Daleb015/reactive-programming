@@ -30,3 +30,12 @@ flatMap take a mapper but this mappers return another observable, when all value
 - concatMap: there is just one difference between the last operations, concatMap executes a concat operation at the end when join the observables, so are going to have
 the observable in a sequential order.
 
+*amb
+
+Amb takes and iterator, we can write two observables that return an iterable, and use as parameters of amb, these operators will return the
+elements of the faster observable first, given two or more source Observables, emit all the items from only the first of these Observables
+to emit an item or notification.
+
+
+
+
