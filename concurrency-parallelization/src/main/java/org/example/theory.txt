@@ -1,0 +1,36 @@
+concurrency and parallelization:
+
+<WE CANNOT RUN EMISSIONS CONCURRENTLY ON A SINGLE OBSERVER AS IT BREACHES THE OBSERVABLE CONTRACT>
+
+If we use the basic behaviour of Observable, it runs in synchronize way, all in the same thread, if we want to use asynchronous behaviour we need to create another thread inside the observable,
+and do it respect the observable contract that says that each element has to be given in a non-asynchronous way.
+
+For this, Rxjava hast the tools called Schedulers, that simplifies the asynchronous behaviour for us.
+
+*Schedulers
+
+there are 5 types of schedulers:
+Computational: computational extensive task use. Use maximum the number of threads of our cpu (Default use recommended)
+io scheduler: for io like http, files, database. Allow using more threads because this threads has wait times.
+NewThread scheduler: for a single jod performance, one done the thread is destroyed.
+Single: one thread is responsible for executing operations on the observer.
+Trampoline scheduler: Not for use, but used under the hood.
+
+
+*subscribeOn
+
+If we want to have an async behaviour we put a Scheduler on a subscribeOn method, and the subscribeOn operator will suggestive the source of an observable
+upstream and will use the schedulers.
+
+if we have many schedulers on a chain of subscribe, and a lot of subscribeOn, the one which is closest to the source wins if I call subscribeOn with schedulers computation
+
+*observeOn
+
+this operator allows us to change to schedulers in the middle of an observable chain.
+
+
+*flatMap
+
+We can use flatMap to process each element on an observable to push separated methods and obtain something like concurrently.
+
+
