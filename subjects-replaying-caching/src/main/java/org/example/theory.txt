@@ -1,0 +1,38 @@
+Subjects-Replaying-Caching
+
+*Replay
+
+When a hot observable is emitting elements, the next observer lost some on these elements. Replay operator is the way to
+hold on to previous emissions within a certain scope and re emit them.
+
+The replay method receive any parameters or a number, that number is the quantity of elements that will replay for the
+new observer´s subscriptions. This emits are cached.
+
+We can even pass time to the replay operator, and will work and caching some values.
+
+*caching
+
+works as same at replay but don't need to auto connect, it produces and observable.
+
+*Subjects:
+
+We have observables and observers, well subjects are a bridge between them.
+
+Subjects can observe data from multiple sources and emit data to multiple observers.
+
+Subject implements Observer and Observable.
+
+subjects allow us to merge multiple emissions from different observables.
+
+* subject implementations
+
+there are different types of subjects implementations, that has their own behaviour.
+
+PublishSubject: Starts to emit the source observables items from the moment observer subscribe to it.
+ReplaySubject: Emits all the items of the source observable, regardless of when the subscriber subscribes.
+BehaviourSubject: emit the most recent item with the subsequent items of the source observable.
+AsyncSubject: emits only the last value of the source observable.
+UnicastSubject: Buffers all the emissions received by the sources, until an observer subscribes to it. Only one oberser allowed
+
+
+
