@@ -1,0 +1,38 @@
+the best way to manage observer cannot consume in the same speed observable produces is to use flowable
+
+there are cases when the producer produces faster than the consumer consume, it can happen when we use concurrency or
+parallelization on a chain of operations from an observable.
+
+Backpressure allow us to avoid the producer-consumer problem.
+
+Just like observable and observer, we have flowable and subscriber
+
+They work in same way, but with the producer-consumer solution
+
+the api are very similar but, when we make a subscription on a flowable, the first lambda is a subscriber not an onNext
+
+The subscription object generate on subscribe a flowable, allow us to control the requested items and more.
+
+* flowable and backpressure strategies
+
+when we create a flowable need to specify the backpressure strategy.
+
+* flowable vs observable
+
+flowable is an implementation of reactive streams and manages backpressure problem.
+
+use flowable when source is emitting large amounts
+use flowable when we have hot observables emitting data endlessly
+when our application become concurrently or asynchronous
+use flowable to handle emissions from io operations
+
+use observable in case of fewer, steady, continuous emissions
+use observable with quick, less overhead.
+
+- we can convert flowable to observable and observable to flowable
+
+
+
+
+
+
