@@ -1,0 +1,32 @@
+Sometimes there will be situations when the observable will emit faster than observer can consume.
+
+
+To sort this there are 4 operators that allow us to emit in different ways, so the observer can consume in the right way.
+
+- buffer
+- window
+- throttleFirst throttleLast
+- switchMap
+
+* buffer:
+
+gather emissions in specified scope.
+emit each batch or group as a collection type.
+we can specify the number of chunks or a specified time to chunk elements.
+
+* windows:
+
+buffer into other observables rather than collections.
+
+* throttle
+
+This operator will omit elements, first or last on an observable in a period of time.
+
+*switchMap
+
+fatten observables, only subscribe to the last emitted observable, and dispose previous ones.
+
+
+
+
+
