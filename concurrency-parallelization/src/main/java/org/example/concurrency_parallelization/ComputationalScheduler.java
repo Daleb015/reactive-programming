@@ -5,28 +5,24 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class ComputationalScheduler {
 
-    public static void main(String[] args) throws InterruptedException {
+  public static void main(String[] args) throws InterruptedException {
+    Observable<String> src = Observable
+      .just("Pasta", "Pizza", "Fries", "Curry", "Chow Mein")
+      .subscribeOn(Schedulers.computation());
 
+    src.subscribe(e -> compute());
+    src.subscribe(e -> compute());
+    src.subscribe(e -> compute());
+    src.subscribe(e -> compute());
+    src.subscribe(e -> compute());
+    src.subscribe(e -> compute());
+    src.subscribe(e -> compute());
 
-        Observable<String> src = Observable.just("Pasta", "Pizza", "Fries", "Curry", "Chow Mein")
-                .subscribeOn(Schedulers.computation());
+    Thread.sleep(50000);
+  }
 
-        src.subscribe(e -> compute());
-        src.subscribe(e -> compute());
-        src.subscribe(e -> compute());
-        src.subscribe(e -> compute());
-        src.subscribe(e -> compute());
-        src.subscribe(e -> compute());
-        src.subscribe(e -> compute());
-
-        Thread.sleep(50000);
-
-
-    }
-
-    public static void compute() throws InterruptedException {
-        Thread.sleep(1000);
-        System.out.println("Computation done by : " + Thread.currentThread().getName());
-    }
-
+  public static void compute() throws InterruptedException {
+    Thread.sleep(1000);
+    System.out.println("Computation done by : " + Thread.currentThread().getName());
+  }
 }

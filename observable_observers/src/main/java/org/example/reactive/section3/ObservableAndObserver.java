@@ -10,45 +10,44 @@ import io.reactivex.rxjava3.internal.operators.observable.ObservableCreate;
 
 public class ObservableAndObserver {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
+    Observable<Integer> source = new ObservableCreate<Integer>(
+      new ObservableOnSubscribe<Integer>() {
+        @Override
+        public void subscribe(@NonNull ObservableEmitter<Integer> emitter) throws Throwable {
+          try {
+            emitter.onNext(10);
+            emitter.onNext(11);
+            emitter.onComplete();
+          } catch (Throwable throwable) {
+            emitter.onError(throwable);
+          }
+        }
+      }
+    );
 
-        Observable<Integer> source = new ObservableCreate<Integer>(new ObservableOnSubscribe<Integer>() {
-            @Override
-            public void subscribe(@NonNull ObservableEmitter<Integer> emitter) throws Throwable {
-                try {
-                    emitter.onNext(10);
-                    emitter.onNext(11);
-                    emitter.onComplete();
-                } catch (Throwable throwable) {
-                    emitter.onError(throwable);
-                }
-            }
-        });
+    Observer<Integer> observer = new Observer<Integer>() {
+      @Override
+      public void onSubscribe(@NonNull Disposable d) {
+        System.out.println(" On subscribed ");
+      }
 
-        Observer<Integer> observer = new Observer<Integer>() {
-            @Override
-            public void onSubscribe(@NonNull Disposable d) {
-                System.out.println(" On subscribed ");
-            }
+      @Override
+      public void onNext(@NonNull Integer integer) {
+        System.out.println("On next : " + integer);
+      }
 
-            @Override
-            public void onNext(@NonNull Integer integer) {
-                System.out.println("On next : "+integer);
-            }
+      @Override
+      public void onError(@NonNull Throwable e) {
+        e.printStackTrace();
+      }
 
-            @Override
-            public void onError(@NonNull Throwable e) {
-                e.printStackTrace();
-            }
+      @Override
+      public void onComplete() {
+        System.out.println("Completed !");
+      }
+    };
 
-            @Override
-            public void onComplete() {
-                System.out.println("Completed !");
-            }
-        };
-
-        source.subscribe(observer);
-
-    }
-
+    source.subscribe(observer);
+  }
 }

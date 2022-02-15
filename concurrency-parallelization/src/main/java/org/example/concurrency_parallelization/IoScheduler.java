@@ -4,28 +4,27 @@ import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class IoScheduler {
-    public static void main(String[] args) throws InterruptedException {
-        Observable<String> src = Observable.just("Pasta","Pizza","Fries","Curry","Chow Mein")
-                .subscribeOn(Schedulers.io());
 
-        src.subscribe(e -> ioOperation());
-        src.subscribe(e -> ioOperation());
-        src.subscribe(e -> ioOperation());
-        src.subscribe(e -> ioOperation());
-        src.subscribe(e -> ioOperation());
-        src.subscribe(e -> ioOperation());
-        src.subscribe(e -> ioOperation());
-        src.subscribe(e -> ioOperation());
+  public static void main(String[] args) throws InterruptedException {
+    Observable<String> src = Observable
+      .just("Pasta", "Pizza", "Fries", "Curry", "Chow Mein")
+      .subscribeOn(Schedulers.io());
 
+    src.subscribe(e -> ioOperation());
+    src.subscribe(e -> ioOperation());
+    src.subscribe(e -> ioOperation());
+    src.subscribe(e -> ioOperation());
+    src.subscribe(e -> ioOperation());
+    src.subscribe(e -> ioOperation());
+    src.subscribe(e -> ioOperation());
+    src.subscribe(e -> ioOperation());
 
-        Thread.sleep(50000);
-    }
+    Thread.sleep(50000);
+  }
 
-    public static void ioOperation() throws InterruptedException {
+  public static void ioOperation() throws InterruptedException {
+    Thread.sleep(1000);
 
-        Thread.sleep(1000);
-
-        System.out.println("Computation done by : "+Thread.currentThread().getName());
-
-    }
+    System.out.println("Computation done by : " + Thread.currentThread().getName());
+  }
 }

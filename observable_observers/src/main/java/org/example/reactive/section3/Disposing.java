@@ -5,29 +5,24 @@ import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
-
 import java.util.concurrent.TimeUnit;
 
 public class Disposing {
 
-    private static final CompositeDisposable disp = new CompositeDisposable();
+  private static final CompositeDisposable disp = new CompositeDisposable();
 
-    public static void main(String[] args) throws InterruptedException{
+  public static void main(String[] args) throws InterruptedException {
+    Observable<Long> source = Observable.interval(1, TimeUnit.SECONDS);
 
-        Observable<Long> source = Observable.interval(1, TimeUnit.SECONDS);
+    Disposable d1 = source.subscribe(e -> System.out.println("Observer 1 : " + e));
+    Disposable d2 = source.subscribe(e -> System.out.println("Observer 2 : " + e));
 
-        Disposable d1 = source.subscribe(e -> System.out.println("Observer 1 : " + e));
-        Disposable d2 = source.subscribe(e -> System.out.println("Observer 2 : " + e));
+    Thread.sleep(5000);
 
-        Thread.sleep(5000);
+    disp.addAll(d1, d2);
 
-        disp.addAll(d1,d2);
+    disp.dispose();
 
-        disp.dispose();
-
-        Thread.sleep(10000);
-
-
-
-    }
+    Thread.sleep(10000);
+  }
 }
